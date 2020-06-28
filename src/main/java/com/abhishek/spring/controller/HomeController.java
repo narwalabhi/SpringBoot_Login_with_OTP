@@ -55,7 +55,7 @@ public class HomeController {
 	}
 	
 	@PostMapping("/login")
-	public ResponseEntity login(@RequestBody LoginRequestBody requestBody) {
+	public String login(@RequestBody LoginRequestBody requestBody) {
 		User user = userRepository.findByEmail(requestBody.getEmail());
 		String message;
 		if (user == null) {
@@ -63,7 +63,7 @@ public class HomeController {
 		} else {
 			message = otpController.validateOtp(requestBody.getEmail(), requestBody.getOtp());
 		}
-		return ResponseEntity.ok(message);
+		return (message);
 	}
 
 }
