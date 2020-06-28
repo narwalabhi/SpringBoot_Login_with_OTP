@@ -20,7 +20,7 @@ import com.abhishek.spring.services.OtpService;
 import com.assignment.spring.repos.UserRepository;
 
 @RepositoryRestController
-@RequestMapping
+@RequestMapping("/home")
 public class HomeController {
 
 
