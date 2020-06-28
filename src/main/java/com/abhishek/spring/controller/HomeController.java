@@ -43,7 +43,6 @@ public class HomeController {
 		return ResponseEntity.ok(assembler.toModel(user));
 	}
 
-	@SuppressWarnings("rawtypes")
 	@PostMapping("/getOtp")
 	public ResponseEntity getOtp(@RequestBody OtpRequestModel requestBody) {
 		User user = userRepository.findByEmail(requestBody.getEmail());
@@ -54,8 +53,7 @@ public class HomeController {
 		}
 		return ResponseEntity.ok("OTP Sent to " + user.getEmail());
 	}
-
-	@SuppressWarnings("rawtypes")
+	
 	@PostMapping("/login")
 	public ResponseEntity login(@RequestBody LoginRequestBody requestBody) {
 		User user = userRepository.findByEmail(requestBody.getEmail());
