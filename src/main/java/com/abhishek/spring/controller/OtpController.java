@@ -50,7 +50,7 @@ public class OtpController {
 		return "otppage";
 	}
 
-	@RequestMapping(value = "/validateOtp", method = RequestMethod.GET)
+	@RequestMapping(value = "/validateOtp")
 	public @ResponseBody String validateOtp(@PathVariable String email, @PathVariable int otpnum) {
 
 		final String SUCCESS = "Entered Otp is valid";
