@@ -8,6 +8,7 @@ import java.nio.file.Files;
 
 public class EmailTemplate {
 
+	@SuppressWarnings("unused")
 	private String templateId;
 	 
 	private String template;

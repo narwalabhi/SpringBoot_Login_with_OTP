@@ -1,14 +1,12 @@
 package com.abhishek.spring.controller;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.rest.webmvc.PersistentEntityResource;
 import org.springframework.data.rest.webmvc.PersistentEntityResourceAssembler;
 import org.springframework.data.rest.webmvc.RepositoryRestController;
 import org.springframework.data.rest.webmvc.ResourceNotFoundException;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -25,7 +23,6 @@ import com.assignment.spring.repos.UserRepository;
 @RequestMapping
 public class HomeController {
 
-	private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
 	@Autowired
 	public OtpService otpService;
@@ -46,6 +43,7 @@ public class HomeController {
 		return ResponseEntity.ok(assembler.toModel(user));
 	}
 
+	@SuppressWarnings("rawtypes")
 	@PostMapping("/getOtp")
 	public ResponseEntity getOtp(@RequestBody OtpRequestModel requestBody) {
 		User user = userRepository.findByEmail(requestBody.getEmail());
@@ -57,6 +55,7 @@ public class HomeController {
 		return ResponseEntity.ok("OTP Sent to " + user.getEmail());
 	}
 
+	@SuppressWarnings("rawtypes")
 	@PostMapping("/login")
 	public ResponseEntity login(@RequestBody LoginRequestBody requestBody) {
 		User user = userRepository.findByEmail(requestBody.getEmail());
